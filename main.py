@@ -35,7 +35,7 @@ app = Flask(__name__)
 
 load_dotenv()
 
-API_KEYS = ast.literal_eval(os.getenv("API_KEYS"))
+API_KEYS = ast.literal_eval(os.getenv("NEWS_API_KEYS"))
 LAST_KEY_INDEX = randrange(0, len(API_KEYS))
 
 repo = git.Repo.init(path='.')
