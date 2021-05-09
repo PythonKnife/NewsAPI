@@ -9,5 +9,5 @@ Modify From `https://github.com/SauravKanchan/NewsAPI.git`
 
 ## Usage
 ```shell
-export API_KEYS='["xxx"]' && python main.py
+export NEWS_API_KEYS='["xxx"]' && python main.py
 ```
