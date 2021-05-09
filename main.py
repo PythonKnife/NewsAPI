@@ -39,7 +39,7 @@ API_KEYS = ast.literal_eval(os.getenv("API_KEYS"))
 LAST_KEY_INDEX = randrange(0, len(API_KEYS))
 
 repo = git.Repo.init(path='.')
-BRANCH_MASTER_NAME = "master"
+BRANCH_MASTER_NAME = "main"
 BRANCH_DATA_NAME = "data"
 remote_origin = repo.remote()
 
