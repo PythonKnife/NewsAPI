@@ -12,23 +12,23 @@ from dotenv import load_dotenv
 from flask import Flask, redirect
 from newsapi import NewsApiClient
 
-COUNTRIES_LANGUAGES = {
-    "ar": [None], "gr": [None], "nl": [None], "za": [None], "au": [None],
-    "hk": [None], "nz": [None], "kr": [None], "at": [None], "hu": [None],
-    "ng": [None], "se": [None], "be": [None], "in": [None], "no": [None],
-    "ch": [None], "br": [None], "id": [None], "ph": [None], "tw": [None],
-    "bg": [None], "ie": [None], "pl": [None], "th": [None], "ca": [None],
-    "il": [None], "pt": [None], "tr": [None], "cn": [None], "it": [None],
-    "ro": [None], "ae": [None], "co": [None], "jp": [None], "ru": [None],
-    "ua": [None], "cu": [None], "lv": [None], "sa": [None], "gb": [None],
-    "cz": [None], "lt": [None], "rs": [None], "us": [None], "eg": [None],
-    "my": [None], "sg": [None], "ve": [None], "fr": [None], "mx": [None],
-    "sk": [None], "de": [None], "ma": [None], "si": [None],
+COUNTRIES_LANGUAGES = { "ar": [None],
+    # "ar": [None], "gr": [None], "nl": [None], "za": [None], "au": [None],
+    # "hk": [None], "nz": [None], "kr": [None], "at": [None], "hu": [None],
+    # "ng": [None], "se": [None], "be": [None], "in": [None], "no": [None],
+    # "ch": [None], "br": [None], "id": [None], "ph": [None], "tw": [None],
+    # "bg": [None], "ie": [None], "pl": [None], "th": [None], "ca": [None],
+    # "il": [None], "pt": [None], "tr": [None], "cn": [None], "it": [None],
+    # "ro": [None], "ae": [None], "co": [None], "jp": [None], "ru": [None],
+    # "ua": [None], "cu": [None], "lv": [None], "sa": [None], "gb": [None],
+    # "cz": [None], "lt": [None], "rs": [None], "us": [None], "eg": [None],
+    # "my": [None], "sg": [None], "ve": [None], "fr": [None], "mx": [None],
+    # "sk": [None], "de": [None], "ma": [None], "si": [None],
 }
 CATEGORIES = ["business", "entertainment", "general", "health", "science", "sports", "technology"]
 
 SOURCES_LANGUAGE = {
-    "abc-news": "en", "bbc-news": "en", "cnn": "en", "fox-news": "en", "google-news": "en",
+    "abc-news": "en", # "bbc-news": "en", "cnn": "en", "fox-news": "en", "google-news": "en",
 }
 
 app = Flask(__name__)
@@ -136,11 +136,13 @@ def update_data():
     git_done()
 
 
-scheduler = BackgroundScheduler()
-INTERVAL = 6 * 60
-scheduler.add_job(func=update_data, trigger="interval", minutes=INTERVAL)
-if not scheduler.running:
-    scheduler.start()
+# scheduler = BackgroundScheduler()
+# INTERVAL = 6 * 60
+# scheduler.add_job(func=update_data, trigger="interval", minutes=INTERVAL)
+# if not scheduler.running:
+#     scheduler.start()
+#
+# # Shut down the scheduler when exiting the app
+# atexit.register(lambda: scheduler.shutdown())
 
-# Shut down the scheduler when exiting the app
-atexit.register(lambda: scheduler.shutdown())
+update_data()
