@@ -101,13 +101,13 @@ def write_file(path, file_name, content, mode='a'):
 
 
 def update_top_headline():
-    newsapi = NewsApiClient(api_key=get_key())
     for category in CATEGORIES:
         for (country, language) in COUNTRIES_LANGUAGES.items():
             print("Started category:{0} country:{1} language:{2} at :{3}".format(category, country, language,
                                                                                  time.strftime(
                                                                                      "%A, %d. %B %Y %I:%M:%S %p")))
             for lan in language:
+                newsapi = NewsApiClient(api_key=get_key())
                 top_headlines = newsapi.get_top_headlines(category=category, country=country,
                                                           language=lan, page_size=100)
                 if lan is None:
@@ -117,9 +117,9 @@ def update_top_headline():
 
 
 def update_everything():
-    newsapi = NewsApiClient(api_key=get_key())
     for (source, language) in SOURCES_LANGUAGE.items():
         print("Started source:{0} : {1}".format(source, time.strftime("%A, %d. %B %Y %I:%M:%S %p")))
+        newsapi = NewsApiClient(api_key=get_key())
         all_articles = newsapi.get_everything(sources=source,
                                               from_param=(datetime.now() - timedelta(days=1, hours=5,
                                                                                      minutes=30)).date().isoformat(),
